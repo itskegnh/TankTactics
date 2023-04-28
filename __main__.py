@@ -1,4 +1,4 @@
-import disnake, json, pickle
+import disnake, json
 from disnake.ext import commands
 import tank
 from io import BytesIO

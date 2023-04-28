@@ -1,11 +1,16 @@
-import disnake, json, os
+import disnake, json, pickle
 from disnake.ext import commands
+import tank
+from io import BytesIO
 
 bot = commands.InteractionBot(test_guilds=[791818283867045941])
 
-@bot.slash_command(name='ping')
-async def _ping(inter : disnake.ApplicationCommandInteraction):
-    await inter.response.send_message('Pong!')
+class TankCog(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        self.tankgrid = tank.TankGrid(15, 10, 256)
+
+bot.add_cog(TankCog(bot))
 
 with open('secrets.json') as f:
     secrets = json.load(f)

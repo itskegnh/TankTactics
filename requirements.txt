@@ -1,2 +1,4 @@
 disnake
 pymongo
+pillow
+httpx
